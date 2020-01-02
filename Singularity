@@ -1,6 +1,6 @@
 
 Bootstrap: docker
-From: nugent68:ansys-nersc:latest 
+From: nugent68:ansys-nersc
 #From: nvidia/cuda:10.2-runtime-centos7 #tmp test only
  
 
@@ -37,6 +37,9 @@ From: nugent68:ansys-nersc:latest
 
 
 # manual build cmd if not using singularity-hub:
+# sudo singularity build  ansys.sif Singularity 2>&1  | tee singularity_build.log
+#
+# singularity 2.6 cmd:
 # sudo singularity build --writable ansys.sif Singularity 2>&1  | tee singularity_build.log
 # troubleshooting container by shelling into it:
 # sudo singularity exec -w ansys.sif /bin/bash
