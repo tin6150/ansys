@@ -1,27 +1,31 @@
 
 Bootstrap: docker
-From: 68nugent:ansys-nersc:latest 
+From: nugent68:ansys-nersc:latest 
 #From: nvidia/cuda:10.2-runtime-centos7 #tmp test only
  
 
 %post
 	[[ -d /opt ]] || mkdir /opt
-	cd /opt
-	wget --quiet https://www.ansys.com/download/software/ansys.tgz
+	#cd /opt
+	#wget --quiet https://www.ansys.com/download/software/ansys.tgz
 	# OR, if just want to use the tgz that was already created, assuming no private content
 	#wget --quiet https://download.dropbox/USERNAME/.../ansys.tgz
 
-	tar xfz ansys.tgz
+	#tar xfz ansys.tgz
 
 	# hacks that maybe useful during development/troubleshooting 
 	# outside the cluster where scratch is not available and still want to write files to it temporarily
   # 41274 is uid for hjohansen
+	mkdir -p       /global/scratch/penugent
+	chown -R 12645 /global/scratch/penugent
 	mkdir -p       /global/scratch/hjohansen
 	chown    41273 /global/scratch/hjohansen
-	chown -R 41273 /opt
+	chown -R 12645:504 /opt
+
 	
 %runscript
-	TZ=PST8PDT /opt/ansys/bin/ansys $@
+	#TZ=PST8PDT /opt/ansys/bin/ansys $@
+	TZ=PST8PDT /bin/bash
 
 %help
 	Please see https://github.com/tin6150/ansys 
