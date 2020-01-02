@@ -5,6 +5,8 @@ From: nugent68/ansys-nersc:latest
  
 
 %post
+	yum -y install xterm tmux screen zsh tcsh less vim
+
 	[[ -d /opt ]] || mkdir /opt
 	#cd /opt
 	#wget --quiet https://www.ansys.com/download/software/ansys.tgz
@@ -15,7 +17,7 @@ From: nugent68/ansys-nersc:latest
 
 	# hacks that maybe useful during development/troubleshooting 
 	# outside the cluster where scratch is not available and still want to write files to it temporarily
-  # 41274 is uid for hjohansen
+	# 41274 is uid for hjohansen
 	mkdir -p       /global/scratch/penugent
 	chown -R 12645 /global/scratch/penugent
 	mkdir -p       /global/scratch/hjohansen
@@ -39,7 +41,7 @@ From: nugent68/ansys-nersc:latest
 # manual build cmd if not using singularity-hub:
 # sudo singularity build  ansys.sif Singularity 2>&1  | tee singularity_build.log
 #
-# singularity 2.6 cmd:
+# older singularity 2.6 cmd:
 # sudo singularity build --writable ansys.sif Singularity 2>&1  | tee singularity_build.log
 # troubleshooting container by shelling into it:
 # sudo singularity exec -w ansys.sif /bin/bash
