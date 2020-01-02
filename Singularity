@@ -1,6 +1,6 @@
 
 Bootstrap: docker
-From: nugent68:ansys-nersc
+From: nugent68/ansys-nersc:latest
 #From: nvidia/cuda:10.2-runtime-centos7 #tmp test only
  
 
